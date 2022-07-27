@@ -49,15 +49,5 @@ class Feedback extends React.Component {
     );
   }
 }
-// const Feedback = () => {
-//   return (
-//     <div>
-//       <h1>Please leave feedback</h1>
-//       <button>Good</button>
-//       <button>Neutral</button>
-//       <button>Bad</button>
-//       <h2>Statistics</h2>
-//     </div>
-//   );
-// };
+
 export default Feedback;
