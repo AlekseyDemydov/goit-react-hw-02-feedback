@@ -1,15 +1,23 @@
 import React from 'react';
-import styles from './formFeed.module.css';
+import Controls from '../controls/controls';
+import Statistics from '../statistics/statistics';
+import styles from '../../css/formFeed.module.css';
 class Feedback extends React.Component {
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
+    visible: false,
   };
+  // show = () => {
+  //   this.setState({ visible: true });
+  // };
+
   handleGood = () => {
     this.setState(prevState => {
       return {
         good: prevState.good + 1,
+        visible: true,
       };
     });
   };
@@ -17,6 +25,7 @@ class Feedback extends React.Component {
     this.setState(prevState => {
       return {
         neutral: prevState.neutral + 1,
+        visible: true,
       };
     });
   };
@@ -24,6 +33,7 @@ class Feedback extends React.Component {
     this.setState(prevState => {
       return {
         bad: prevState.bad + 1,
+        visible: true,
       };
     });
   };
@@ -32,19 +42,35 @@ class Feedback extends React.Component {
     return (
       <div className={styles.box}>
         <h1>Please leave feedback</h1>
-        <button onClick={this.handleGood}>Good</button>
-        <button onClick={this.handleNeutral}>Neutral</button>
-        <button onClick={this.handleBad}>Bad</button>
-        <h2>Statistics</h2>
-        <div className={styles.state}>
-          <span>good: {this.state.good}</span>
-          <span>neutral: {this.state.neutral}</span>
-          <span>bad: {this.state.bad}</span>
-          <span>
-            total:
-            {this.state.good + this.state.neutral + this.state.bad}
-          </span>
+        <div>
+          <Controls
+            onGood={this.handleGood}
+            onNeutral={this.handleNeutral}
+            onBad={this.handleBad}
+          />
         </div>
+
+        <h2>Statistics</h2>
+        {this.state.visible ? (
+          <div>
+            <Statistics
+              sGood={this.state.good}
+              sNeutral={this.state.neutral}
+              sBad={this.state.bad}
+            />
+          </div>
+        ) : (
+          'There is no feedback'
+        )}
+        {/* {this.state.visible && (
+          <div>
+            <Statistics
+              sGood={this.state.good}
+              sNeutral={this.state.neutral}
+              sBad={this.state.bad}
+            />
+          </div>
+        )} */}
       </div>
     );
   }
