@@ -1,4 +1,4 @@
-import Feedback from './formFeed/form-feed';
+import Feedback from './Feedback/Feedback';
 export const App = () => {
   return (
     <div>
