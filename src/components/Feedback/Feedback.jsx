@@ -14,7 +14,6 @@ class Feedback extends React.Component {
     this.setState(prevState => {
       return {
         good: prevState.good + 1,
-        visible: true,
       };
     });
   };
@@ -22,7 +21,6 @@ class Feedback extends React.Component {
     this.setState(prevState => {
       return {
         neutral: prevState.neutral + 1,
-        visible: true,
       };
     });
   };
@@ -30,7 +28,6 @@ class Feedback extends React.Component {
     this.setState(prevState => {
       return {
         bad: prevState.bad + 1,
-        visible: true,
       };
     });
   };
