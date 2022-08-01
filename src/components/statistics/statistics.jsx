@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from '../../css/formFeed.module.css';
+import PropTypes from 'prop-types';
+import styles from '../Feedback/Feedback.module.css';
 
 const Statistics = ({ sGood, sNeutral, sBad, total, posProc }) => (
   <div className={styles.state}>
@@ -11,3 +12,11 @@ const Statistics = ({ sGood, sNeutral, sBad, total, posProc }) => (
   </div>
 );
 export default Statistics;
+
+Statistics.propTypes = {
+  sGood: PropTypes.number.isRequired,
+  sNeutral: PropTypes.number.isRequired,
+  sBad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  posProc: PropTypes.number.isRequired,
+};
