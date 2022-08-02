@@ -1,6 +1,7 @@
 import React from 'react';
-import Controls from '../controls/controls';
-import Statistics from '../statistics/statistics';
+import Section from '../Section/Section';
+import FeedbackOptions from '../FeedbackOptions/FeedbackOptions';
+import Statistics from '../Statistics/Statistics';
 import styles from './Feedback.module.css';
 
 class Feedback extends React.Component {
@@ -10,26 +11,12 @@ class Feedback extends React.Component {
     bad: 0,
   };
 
-  handleGood = () => {
-    this.setState(prevState => {
-      return {
-        good: prevState.good + 1,
-      };
-    });
-  };
-  handleNeutral = () => {
-    this.setState(prevState => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
-  };
-  handleBad = () => {
-    this.setState(prevState => {
-      return {
-        bad: prevState.bad + 1,
-      };
-    });
+  handleLeaveFedback = e => {
+    e.preventDefault();
+
+    this.setState(prevState => ({
+      [e.target.name]: prevState[e.target.name] + 1,
+    }));
   };
 
   countTotalFeedback = () => {
@@ -39,15 +26,16 @@ class Feedback extends React.Component {
     return (100 / this.countTotalFeedback()) * this.state.good;
   };
   render() {
+    const options = ['good', 'neutral', 'bad'];
     return (
-      <div className={styles.box}>
-        <h1>Please leave feedback</h1>
+      <div className={styles.main}>
         <div>
-          <Controls
-            onGood={this.handleGood}
-            onNeutral={this.handleNeutral}
-            onBad={this.handleBad}
-          />
+          <Section title="Please leave feedback">
+            <FeedbackOptions
+              options={options}
+              onLeaveFeedback={this.handleLeaveFedback}
+            />
+          </Section>
         </div>
 
         <h2>Statistics</h2>

@@ -1,8 +1,8 @@
-.state{
+ul{
+    list-style: none;
+}
+.main{
     display: flex;
     flex-direction: column;
-}
-.box{
-    display: table;
-    margin: 0 auto;
+        align-items: center;
 }
