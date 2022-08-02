@@ -1,6 +1,6 @@
 import React from 'react';
 import Section from '../Section/Section';
-import Statistics from '../Statistics/Statistics';
+import Statistics from '../Stat/Statistics';
 import FeedbackOptions from '../FeedbackOptions/FeedbackOptions';
 import styles from './Feedback.module.css';
 
@@ -29,26 +29,22 @@ class Feedback extends React.Component {
     const options = ['good', 'neutral', 'bad'];
     return (
       <div className={styles.main}>
-        <div>
-          <Section title="Please leave feedback">
-            <FeedbackOptions
-              options={options}
-              onLeaveFeedback={this.handleLeaveFedback}
-            />
-          </Section>
-        </div>
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            options={options}
+            onLeaveFeedback={this.handleLeaveFedback}
+          />
+        </Section>
 
         <h2>Statistics</h2>
         {this.countTotalFeedback() ? (
-          <div>
-            <Statistics
-              posProc={this.countPositiveFeedbackPercentage()}
-              total={this.countTotalFeedback()}
-              sGood={this.state.good}
-              sNeutral={this.state.neutral}
-              sBad={this.state.bad}
-            />
-          </div>
+          <Statistics
+            posProc={this.countPositiveFeedbackPercentage()}
+            total={this.countTotalFeedback()}
+            sGood={this.state.good}
+            sNeutral={this.state.neutral}
+            sBad={this.state.bad}
+          />
         ) : (
           'There is no feedback'
         )}
